@@ -17,7 +17,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $username_err = "O nome de usuário pode conter apenas letras, números e sublinhados.";
     } else{
         // Prepare uma declaração selecionada
-        $sql = "SELECT id FROM tb_usuario WHERE emial_usuario = :email";
+        $sql = "SELECT id FROM tb_usuario WHERE email_usuario = :email";
         
         if($stmt = $conexao->prepare($sql)){
             // Vincule as variáveis à instrução preparada como parâmetros
