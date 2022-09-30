@@ -8,5 +8,6 @@
 </head>
 <body>
     <h1>painel</h1>
+    <a href="../login/logoff.php">sair</a>
 </body>
 </html>

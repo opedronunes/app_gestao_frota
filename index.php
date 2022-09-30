@@ -9,7 +9,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
 }
 
 //Conexão com banco - arquivo de config
-require_once "./conexao/Conexao.php";
+require_once "./conexao/connection.php";
 
 //Varáveis de erro vazias
 $email = $senha = "";
@@ -54,12 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         ON
                     s.id_status = u.id_status
                 WHERE
-                    email_usuario = :email
-                AND senha_usuario = :senha;";
+                    email_usuario = :email";
 
         //$sql = "SELECT id, username, password FROM tb_users WHERE username = :username";
 
-        if ($stmt = $conn->prepare($sql)) {
+        if ($stmt = $conexao->prepare($sql)) {
             
             //Vincular as variáveis á instrução preparada como parâmetros
             $stmt->bindParam(":email", $param_email, PDO::PARAM_STR);
@@ -74,7 +73,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->rowCount() == 1) {
                     if ($row = $stmt->fetch()) {
                         $id = $row["id_usuario"];
-                        $username = $row["email_usuario"];
+                        $email = $row["email_usuario"];
                         $hashed_password = $row["senha_usuario"];
                         if (password_verify($senha, $hashed_password)) {
                             
@@ -84,7 +83,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             //Armazena os dados em variáveis de sessão
                             $_SESSION["loggedin"] = true;
                             $_SERVER["id_usuario"] = $id;
-                            //$_SESSION["username"] = $username;
                             $_SESSION['no_usuario'] = $registro['no_usuario'];
                             $_SESSION['nu_cpf_usuario'] = $registro['nu_cpf_usuario'];
                             $_SESSION['email_usuario'] = $registro['email_usuario'];
