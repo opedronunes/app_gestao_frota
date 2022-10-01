@@ -73,22 +73,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if ($stmt->rowCount() == 1) {
                     if ($row = $stmt->fetch()) {
                         $id = $row["id_usuario"];
+                        $nome = $row["no_usuario"];
+                        $cpf = $row["nu_cpf_usuario"];
                         $email = $row["email_usuario"];
                         $hashed_password = $row["senha_usuario"];
+                        $perfil = $row["no_perfil"];
+                        $status = $row["no_status"];
                         if (password_verify($senha, $hashed_password)) {
                             
                             //Se a senha está correta, inicie uma nova sessão
-                            session_start();
 
                             //Armazena os dados em variáveis de sessão
                             $_SESSION["loggedin"] = true;
                             $_SERVER["id_usuario"] = $id;
-                            $_SESSION['no_usuario'] = $registro['no_usuario'];
-                            $_SESSION['nu_cpf_usuario'] = $registro['nu_cpf_usuario'];
-                            $_SESSION['email_usuario'] = $registro['email_usuario'];
-                            $_SESSION['no_perfil'] = $registro['no_perfil'];
-                            $_SESSION['no_status'] = $registro['no_status'];
-                            $_SESSION['senha_usuario'] = $registro['senha_usuario'];
+                            $_SESSION['no_usuario'] = $nome;
+                            $_SESSION['nu_cpf_usuario'] = $cpf;
+                            $_SESSION['email_usuario'] = $email;
+                            $_SESSION['no_perfil'] = $perfil;
+                            $_SESSION['no_status'] = $status;
 
                             //Redireciona o usuário para o dashboard
                             header("Location: ./admin/dashboard.php");
@@ -108,6 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }else {
                 echo "Oops! Algo deu errado. Por favor, tente novamente mais tarde.";
             }
+
+            
 
             //Fechar declaração
             unset($stmt);
@@ -148,7 +152,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
                 <div>
                     <label for="password">Senha:</label>
-                    <input type="password" name="senha" id="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>">
+                    <input type="password" name="senha" id="senha" class="form-control <?php echo (!empty($senha_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $senha ?>">
                     <span class="invalid-feedback"><?php echo $senha_err ?></span>
                 </div>
                 <div class="form-group">
