@@ -11,6 +11,12 @@
     --color-white: #e7e7e7;
     --color-gray: #d8d8d88d;
     --color-gray2: #353535;
+    --color-green: #6aff76;
+    --color-greenl: #006d09;
+    --color-orange: #eb8500;
+    --color-orangel: #b87d30;
+    --color-blue: #00635c;
+    --color-bluel: #55ddd5;  
 }
 
 p, h1, h2, h3, h4, a, i
@@ -23,7 +29,7 @@ body
     color: var(--color-white);
     font-family: 'Merriweather Sans', sans-serif;
 }
-/*dashboard*/
+
 header{
     width: 100%;
     background: var(--color-black);
@@ -103,7 +109,7 @@ nav ul li a
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 1.6rem 1.8rem;
+    padding: 1.2rem 1.6rem;
     margin: 0;
     color: var(--color-white);
     transition: all .3s;
@@ -119,4 +125,39 @@ nav ul li a:hover
 nav ul li a i
 {
     font-size: 1.5rem;
+}
+section
+{
+    margin: 35px 0;
+}
+#card-total
+{
+    display: flex;
+    gap: 3px;
+    width: 100%;
+    
+}
+.cards
+{
+    
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    height: 80px;
+    border-radius: 4px;
+}
+#card-faturamento
+{
+    background: linear-gradient(165deg, var(--color-orange), var(--color-orangel) );
+}
+#card-frotas
+{
+    background: linear-gradient(165deg, var(--color-greenl), var(--color-green) );
+}
+#card-funcionario
+{
+    background: linear-gradient(165deg, var(--color-blue), var(--color-bluel) );
 }

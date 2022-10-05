@@ -1,0 +1,93 @@
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p, h1, h2, h3, h4, a, i
+{
+    margin: 0;
+}
+:root
+{
+    --color-black: #242424;
+    --color-white: #e7e7e7;
+    --color-gray: #d8d8d88d;
+    --color-gray2: #353535;
+}
+body
+{
+    background: var(--color-black);
+    color: var(--color-white);
+    font-family: 'Merriweather Sans', sans-serif;
+}
+main
+{
+    display: flex;
+    
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+h2
+{
+    font-weight: 700;
+    margin: 1rem 0;
+}
+.inputs
+{
+    display: flex;
+    flex-direction: column;
+}
+.inputs label
+{
+    margin-top: 12px;
+}
+input[type="submit"]
+{
+    margin: 1rem 0;
+    border: 1px solid var(--color-white);
+    padding: 0.3rem 1.5rem;
+    border-radius: 5px;
+    transition: .3s;
+}
+input[type="submit"]:hover
+{
+    background: var(--color-white);
+    color: var(--color-black);
+}
+form input{
+    background: none;
+    padding: 4px 8px;
+    color: var(--color-white);
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid var(--color-gray);
+}
+form input:focus
+{
+    box-shadow: none;
+    outline: none;
+    outline: none;
+    border-bottom: 1px solid var(--color-gray);
+}
+form p, a
+{
+    margin: 1.5rem 0;
+    text-decoration: none;
+    transition: .3s;
+}
+form a
+{
+    color: var(--color-gray);
+}
+form a:hover
+{
+    color: var(--color-white);
+}
+.is-invalid
+{
+    border-bottom: 1px solid #ff00009d;
+}

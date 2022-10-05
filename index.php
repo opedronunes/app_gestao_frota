@@ -135,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles/bootstrapv5.2.min.css">
-    <link rel="stylesheet" type="text/css" href="/assets/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="/assets/styles/login.css">
 
     <title>Login - App Gestão de Frotas</title>
 </head>
