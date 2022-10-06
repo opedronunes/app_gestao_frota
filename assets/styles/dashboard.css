@@ -11,10 +11,10 @@
     --color-white: #e7e7e7;
     --color-gray: #d8d8d88d;
     --color-gray2: #353535;
-    --color-green: #6aff76;
+    --color-green: #60eb6c;
     --color-greenl: #006d09;
     --color-orange: #eb8500;
-    --color-orangel: #b87d30;
+    --color-orangel: #f0a33e;
     --color-blue: #00635c;
     --color-bluel: #55ddd5;  
 }
@@ -151,13 +151,18 @@ section
 }
 #card-faturamento
 {
-    background: linear-gradient(165deg, var(--color-orange), var(--color-orangel) );
+    background: linear-gradient(170deg, var(--color-orangel), var(--color-orange));
 }
 #card-frotas
 {
-    background: linear-gradient(165deg, var(--color-greenl), var(--color-green) );
+    background: linear-gradient(170deg, var(--color-green), var(--color-greenl));
 }
 #card-funcionario
 {
-    background: linear-gradient(165deg, var(--color-blue), var(--color-bluel) );
+    background: linear-gradient(170deg, var(--color-bluel), var(--color-blue));
+}
+
+table, tr, th, td
+{
+    color: aliceblue;
 }

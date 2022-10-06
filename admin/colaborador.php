@@ -7,11 +7,22 @@ ob_start();
 if ((!isset($_SESSION['id_usuario'])) AND (!isset($_SESSION['email_usuario']))) {
     header("Location: ../index.php");
 }
+//include("./classes/Gestao.class.php");
+include("./conexao/connection.php");
 
-$sql = "SELECT COUNT(id_colaborador) AS qtd_colaborador FROM tb_colaborador";
-$tcolaborador = $conexao->prepare($sql);
-$tcolaborador->execute();
-$row_colaborador = $tcolaborador->fetch(PDO::FETCH_ASSOC);
+$query = "SELECT 
+            c.*,
+            s.no_status
+            FROM tb_colaborador as c
+            INNER JOIN tb_status as s
+            ON
+            c.id_status = s.id_status
+            ORDER BY no_colaborador ASC
+";
+
+$dados = $conexao->query($query);
+$dados->execute();
+
 
 ?>
 <!DOCTYPE html>
@@ -26,7 +37,7 @@ $row_colaborador = $tcolaborador->fetch(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="../assets/styles/bootstrapv5.2.min.css">
     <link rel="stylesheet" type="text/css" href="/assets/styles/dashboard.css">
     <script src="https://unpkg.com/phosphor-icons"></script>
-    <title>Dashboard</title>
+    <title>Colaborador</title>
 </head>
     <body>
         <header>
@@ -48,41 +59,50 @@ $row_colaborador = $tcolaborador->fetch(PDO::FETCH_ASSOC);
                         <li><a href="./dashboard.php"><i class="ph-house"></i> Home</a></li>
                         <li><a href=""><i class="ph-currency-dollar"></i> Faturameto</a></li>
                         <li><a href=""><i class="ph-truck"></i> Frotas</a></li>
-                        <li><a href="./colaborador.php"><i class="ph-users-three"></i> Colaboradoes</a></li>
+                        <li><a href=""><i class="ph-users-three"></i> Colaboradores</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
 
-        <section id="">
-            <div class="container">
-                <div id="card-total">
-                    <div id="card-faturamento" class="cards">
-                        <h6>Faturamento</h6>
-                        <div class="card-content">
-                            <h4>R$15.000,00</h4>
-                        </div>
-                    </div>
-                    <div id="card-frotas" class="cards">
-                        <h6>Frotas</h6>
-                        <div class="card-content">
-                            <h4>23</h4>
-                        </div>
-                    </div>
-                    <div id="card-funcionario" class="cards">
-                        <h6>Colaboradores</h6>
-                        <div class="card-content">
-                            <h4><?= $row_colaborador['qtd_colaborador'] ?></h4>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <section>
             <div class="container">
                 <div>
-                    <small><i class="ph-clock-clockwise"></i>Últimos lançamentos</small>
+                    <small><i class="ph-users-three"></i>Registros</small>
                 </div>
+                <table class="table"> 
+                    <tr> 
+                        <th>#</th>  
+                        <th>CPF</th>
+                        <th>Nome</th> 
+                        <th>Nascimento</th>
+                        <th>Admissão</th>         
+                        <th>Função</th> 
+                        <th>Salário</th> 
+                        <th>Registrado em</th>
+                        <th>Status</th>
+                        <th>Editar</th>
+                    </tr> 
+                    <?php while($result = $dados->fetch(PDO::FETCH_ASSOC)) { ?> 
+                    <tr> 
+                        <th><?= $result['id_colaborador']; ?></th>
+                        <td><?= $result['nu_cpf_colaborador']; ?></td>
+                        <td><?= $result['no_colaborador']; ?></td>
+                        <td><?= $result['dt_nascimento']; ?></td> 
+                        <td><?= $result['dt_admissao']; ?></td>
+                        <td><?= $result['no_funcao']; ?></td>
+                        <td><?= $result['vl_salario']; ?></td>
+                        <td><?= $result['dt_cadastro']; ?></td>
+                        <td><?= $result['no_status']; ?></td>
+
+                        
+                        <td> 
+                            <a href=""><i class="ph-pencil-simple"></i>Editar</a> 
+                            <a href=""><i class="ph-trash"></i>Excluir</a> 
+                        </td> 
+                    </tr> 
+                    <?php } ?> 
+                </table>
             </div>
         </section>
         <script src="../assets/js/bootstrapv5.2.min.js"></script> 
