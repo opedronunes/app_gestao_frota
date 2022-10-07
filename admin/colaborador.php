@@ -67,42 +67,42 @@ $dados->execute();
 
         <section>
             <div class="container">
-                <div>
-                    <small><i class="ph-users-three"></i>Registros</small>
+                <div class="table-responsive-md">
+                    <div class="table-top">
+                        <i class="ph-users-three"></i>Todos os Colaboradores
+                    </div>
+                    <table class="table"> 
+                        <tr> 
+                            <th>#</th>  
+                            <th>CPF</th>
+                            <th>Nome</th> 
+                            <th>Nascimento</th>
+                            <th>Admissão</th>         
+                            <th>Função</th> 
+                            <th>Salário</th> 
+                            <th>Registrado em</th>
+                            <th>Status</th>
+                            <th>Ação</th>
+                        </tr> 
+                        <?php while($result = $dados->fetch(PDO::FETCH_ASSOC)) { ?> 
+                        <tr> 
+                            <th><?= $result['id_colaborador']; ?></th>
+                            <td><?= $result['nu_cpf_colaborador']; ?></td>
+                            <td><?= $result['no_colaborador']; ?></td>
+                            <td><?= $result['dt_nascimento']; ?></td> 
+                            <td><?= $result['dt_admissao']; ?></td>
+                            <td><?= $result['no_funcao']; ?></td>
+                            <td><?= $result['vl_salario']; ?></td>
+                            <td><?= $result['dt_cadastro']; ?></td>
+                            <td><?= $result['no_status']; ?></td>
+                            <td> 
+                                <a href=""><i class="ph-pencil-simple"></i></a> 
+                                <a href=""><i class="ph-trash"></i></a> 
+                            </td> 
+                        </tr> 
+                        <?php } ?> 
+                    </table>
                 </div>
-                <table class="table"> 
-                    <tr> 
-                        <th>#</th>  
-                        <th>CPF</th>
-                        <th>Nome</th> 
-                        <th>Nascimento</th>
-                        <th>Admissão</th>         
-                        <th>Função</th> 
-                        <th>Salário</th> 
-                        <th>Registrado em</th>
-                        <th>Status</th>
-                        <th>Editar</th>
-                    </tr> 
-                    <?php while($result = $dados->fetch(PDO::FETCH_ASSOC)) { ?> 
-                    <tr> 
-                        <th><?= $result['id_colaborador']; ?></th>
-                        <td><?= $result['nu_cpf_colaborador']; ?></td>
-                        <td><?= $result['no_colaborador']; ?></td>
-                        <td><?= $result['dt_nascimento']; ?></td> 
-                        <td><?= $result['dt_admissao']; ?></td>
-                        <td><?= $result['no_funcao']; ?></td>
-                        <td><?= $result['vl_salario']; ?></td>
-                        <td><?= $result['dt_cadastro']; ?></td>
-                        <td><?= $result['no_status']; ?></td>
-
-                        
-                        <td> 
-                            <a href=""><i class="ph-pencil-simple"></i>Editar</a> 
-                            <a href=""><i class="ph-trash"></i>Excluir</a> 
-                        </td> 
-                    </tr> 
-                    <?php } ?> 
-                </table>
             </div>
         </section>
         <script src="../assets/js/bootstrapv5.2.min.js"></script> 

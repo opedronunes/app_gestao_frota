@@ -17,11 +17,17 @@
     --color-orangel: #f0a33e;
     --color-blue: #00635c;
     --color-bluel: #55ddd5;  
+    --color-warning: #ffee07;
+    --color-danger: #fc3d3d;
 }
 
 p, h1, h2, h3, h4, a, i
 {
     margin: 0;
+}
+i
+{
+    font-size: 1.5rem;
 }
 body
 {
@@ -165,4 +171,39 @@ section
 table, tr, th, td
 {
     color: aliceblue;
+}
+td, th
+{
+    border-bottom: 1px solid var(--color-gray2);
+    font-size: 0.8rem;
+}
+.table-top
+{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--color-gray);
+    margin: 0.8rem 0;
+}
+table td a
+{
+    text-decoration: none;
+}
+
+.ph-pencil-simple
+{
+    color: var(--color-warning);
+    transition: all .3s;
+    padding: 0 3px;
+}
+.ph-trash
+{
+    color: var(--color-danger);
+    transition: all .3s;
+    padding: 0 3px;
+}
+.ph-pencil-simple:hover, .ph-trash:hover
+{
+    opacity: 0.7;
+    transition: all .3s;
 }
