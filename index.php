@@ -8,6 +8,13 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("Location: ./admin/dashboard.php");
 }
 
+$message = "";
+if (isset($_GET["registro"])) {
+    if ($_GET["registro"] == "ok") {
+        $message = "<div class='alert alert-success'>Usuário cadastrado com sucesso!</div>";
+    }
+}
+
 //Conexão com banco - arquivo de config
 require_once "./conexao/connection.php";
 
@@ -148,6 +155,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         ?>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+            <div><?= $message ?></div>
             <div class="inputs">
                 <label for="name">Email do usuário:</label>
                 <input type="text" name="email" id="name" class="<?php echo (!empty($email_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $email; ?>">
