@@ -58,6 +58,10 @@ input[type="submit"]:hover,  input[type="reset"]:hover
     background: var(--color-white);
     color: var(--color-black);
 }
+input[type="date"]
+{
+    color: var(--color-gray);
+}
 form input{
     background: none;
     padding: 4px 8px;
@@ -70,7 +74,7 @@ select
 {
     background: none;
     padding: 4px 8px;
-    color: var(--color-white);
+    color: var(--color-gray);
     border-radius: 0;
     border: none;
     border-bottom: 1px solid var(--color-gray);
@@ -91,7 +95,7 @@ option:focus
 select option
 {
     background: var(--color-gray2);
-    color: var(--color-white);
+    color: var(--color-gray);
 }
 form input:focus
 {
