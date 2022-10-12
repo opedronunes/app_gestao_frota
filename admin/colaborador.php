@@ -1,6 +1,4 @@
 <?php
-include_once "../conexao/connection.php";
-include_once "../classes/Gestao.class.php";
 
 $acao = 'recuperar';
 require ("../classes/colaborador_controller.php");
@@ -13,6 +11,28 @@ if (isset($_GET['inclusao'])) {
                     </div>";
     }
 }
+if (isset($_GET['remocao'])) {
+    if ($_GET['remocao'] == 1) {
+        $message = "<div class='bg-success pt-2 text-white d-flex justify-content-center'>
+                        <h5>Colaborador removido com sucesso!</h5>
+                    </div>";
+    }
+}
+if (isset($_GET['atualizar'])) {
+    if ($_GET['atualizar'] == 1) {
+        $message = "<div class='bg-success pt-2 text-white d-flex justify-content-center'>
+                        <h5>Colaborador atualizado com sucesso!</h5>
+                    </div>";
+    }
+}
+if (isset($_GET['erro'])) {
+    if ($_GET['erro'] == 1) {
+        $message = "<div class='bg-danger pt-2 text-white d-flex justify-content-center'>
+                        <h5>Dados inválido!</h5>
+                    </div>";
+    }
+}
+
 
 
 session_start();
@@ -173,11 +193,9 @@ $result->execute();
                             <td><?= date('d/m/Y á\s H:i:s', strtotime($colaborador->dt_cadastro)); ?></td>
                             <td><?= $colaborador->no_status ?></td>
                             <td> 
-                            
-                            
-                                <a href="../admin/formulario.php?id=<?= $colaborador->id_colaborador?>"><i class="ph-pencil-simple"></i></a>
-                                <a href=""><i class="ph-trash"></i></a> 
-                            </td> 
+                                <a href="./formulario.php?id=<?=$colaborador->id_colaborador?>"><i class="ph-pencil-simple"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#confirmExcluir"><i class="ph-trash"></i></a> 
+                            </td>
                         </tr> 
                         <?php } ?> 
                     </table>
@@ -185,5 +203,18 @@ $result->execute();
             </div>
         </section>
         <script src="../assets/js/bootstrapv5.2.min.js"></script> 
+        <div id="confirmExcluir" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <p>Tem certeza que deseja excluir?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <a href="../classes/colaborador_controller.php?id=<?= $colaborador->id_colaborador?>&acao=remover" class="btn btn-primary">SIM</a>
+                </div>
+                </div>
+            </div>
+        </div>
     </body>
 </html>

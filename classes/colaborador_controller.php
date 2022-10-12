@@ -32,7 +32,7 @@ if ($acao == 'inserir') {
     $colaboradorService = new ColaboradorService($conexao, $colaborador);
     $colaboradores = $colaboradorService->recuperar();
 
-}elseif ($acao = 'atualizar') {
+}elseif ($acao == 'atualizar') {
     $colaborador = new Colaborador();
     $colaborador->__set('id_colaborador', $_POST['id']);
     $colaborador->__set('nu_cpf_colaborador', $_POST['cpf']);
@@ -47,18 +47,33 @@ if ($acao == 'inserir') {
 
     $colaboradorService = new ColaboradorService($conexao, $colaborador);
     $colaboradorService->atualizar();
-    /*
-    if () {
 
-        header("Location: ../admin/formulario.php");
-        if (isset($_GET['pag']) && $_GET['pag'] == 'formulario') {
-        }
+    header("Location: ../admin/colaborador.php?atualizar=1");
 
-        header("Location: ../admin/colaborador.php");
-        
-    }
-    */
-}elseif ($acao == 'recuperarTodosColaboradores') {
+}elseif ($acao == 'remover') {
+    $colaborador = new Colaborador();
+    $colaborador->__set('id_colaborador', $_GET['id']);
+
+    $conexao = new Conexao();
+
+    $colaboradorService = new ColaboradorService($conexao, $colaborador);
+    $colaboradorService->remover();
+
+    header("Location: ../admin/colaborador.php?remocao=1");
+
+}elseif ($acao == 'recuperarPorId') {
+    $colaborador = new Colaborador();
+    $colaborador->__set('id_colaborador', $_GET['id']);
+
+    $conexao = new Conexao();
+
+    $colaboradorService = new ColaboradorService($conexao, $colaborador);
+    $colaboradorId = $colaboradorService->recuperarPorId();
+
+
+}
+
+elseif ($acao == 'recuperarTodosColaboradores') {
     $colaborador = new Colaborador();
     $colaborador->__set('id_colaborador', 1);
 
@@ -66,4 +81,5 @@ if ($acao == 'inserir') {
 
     $colaboradorService = new ColaboradorService($conexao, $colaborador);
     $colaboradores = $colaboradorService->recuperarTodosColaboradores();
+
 }

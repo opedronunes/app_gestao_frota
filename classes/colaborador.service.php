@@ -61,6 +61,25 @@ class ColaboradorService{
         return $stmt->execute();
     }
 
+    public function editar(){
+        
+    }
+
+    public function remover(){
+        $query = "DELETE FROM tb_colaborador WHERE id_colaborador = :id_colaborador";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(':id_colaborador', $this->colaborador->__get('id_colaborador'));
+        $stmt->execute();
+    }
+
+    public function recuperarPorId(){
+        $query = "SELECT * FROM tb_colaborador WHERE id_colaborador = :id_colaborador LIMIT 1";
+        $stmt = $this->conexao->prepare($query);
+        $stmt->bindValue(':id_colaborador', $this->colaborador->__get('id_colaborador'));
+        $stmt->execute();
+        $colaboradorId = $stmt->fetch(PDO::FETCH_OBJ);
+    }
+
     public function recuperarTodosColaboradores(){
         $query = "SELECT * FROM tb_colaborador WHERE id_colaborador = :id_colaborador";
         $stmt = $this->conexao->prepare($query);
@@ -68,4 +87,5 @@ class ColaboradorService{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
+
 }
