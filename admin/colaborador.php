@@ -33,28 +33,12 @@ if (isset($_GET['erro'])) {
     }
 }
 
-
-
 session_start();
 ob_start();
 
 if ((!isset($_SESSION['id_usuario'])) AND (!isset($_SESSION['email_usuario']))) {
     header("Location: ../index.php");
 }
-/*
-$query = "SELECT 
-            c.*,
-            s.no_status
-            FROM tb_colaborador as c
-            INNER JOIN tb_status as s
-            ON
-            c.id_status = s.id_status
-            ORDER BY no_colaborador ASC
-";
-
-$result = $conexao->query($query);
-$result->execute();
-*/
 
 ?>
 <!DOCTYPE html>
@@ -193,8 +177,8 @@ $result->execute();
                             <td><?= date('d/m/Y á\s H:i:s', strtotime($colaborador->dt_cadastro)); ?></td>
                             <td><?= $colaborador->no_status ?></td>
                             <td> 
-                                <a href="./formulario.php?id=<?=$colaborador->id_colaborador?>"><i class="ph-pencil-simple"></i></a>
-                                <a data-bs-toggle="modal" data-bs-target="#confirmExcluir"><i class="ph-trash"></i></a> 
+                                <a href="./formulario.php?id=<?=$colaborador->id_colaborador?>" title="Editar"><i class="ph-pencil-simple"></i></a>
+                                <a data-bs-toggle="modal" data-bs-target="#confirmExcluir" title="Excluir"><i class="ph-trash"></i></a> 
                             </td>
                         </tr> 
                         <?php } ?> 
@@ -202,19 +186,21 @@ $result->execute();
                 </div>
             </div>
         </section>
-        <script src="../assets/js/bootstrapv5.2.min.js"></script> 
-        <div id="confirmExcluir" class="modal" tabindex="-1">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                <div class="modal-body">
-                    <p>Tem certeza que deseja excluir?</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                    <a href="../classes/colaborador_controller.php?id=<?= $colaborador->id_colaborador?>&acao=remover" class="btn btn-primary">SIM</a>
-                </div>
+        <div id="modal-confirm">
+            <div id="confirmExcluir" class="modal" tabindex="-1">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            <p>Tem certeza que deseja excluir?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" data-bs-dismiss="modal" class="btn btn-sm btn-secondary">Fechar</button>
+                            <a href="../classes/colaborador_controller.php?id=<?= $colaborador->id_colaborador?>&acao=remover" class="btn btn-sm btn-danger">SIM</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <script src="../assets/js/bootstrapv5.2.min.js"></script> 
     </body>
 </html>

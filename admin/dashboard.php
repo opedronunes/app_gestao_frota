@@ -80,8 +80,12 @@ $row_colaborador = $tcolaborador->fetch(PDO::FETCH_ASSOC);
         </section>
         <section>
             <div class="container">
-                <div>
-                    <small><i class="ph-clock-clockwise"></i>Últimos lançamentos</small>
+                <div class="title-table">
+                    <i class="ph-clock-clockwise"></i>Últimos lançamentos
+                </div>
+                <div class="my-4">
+                    <h4>Essa página esta construção!</h4>
+                    <small>Para visualizar o CRUD acesse a página Colaboradores.</small>
                 </div>
             </div>
         </section>

@@ -1,8 +1,6 @@
 <?php
 
-//$acao = 'recuperar';
-require ("../classes/colaborador.service.php");
-require ("../classes/colaborador.model.php");
+
 require ("../conexao/conexao.php");
 
 session_start();
@@ -80,6 +78,7 @@ if (!empty($id_colaborador) && is_numeric($id_colaborador)) {
                 </div>
                 <div>
                     <input type="submit" value="Atualizar">
+                    <a class="mx-2" href="../admin/colaborador.php">Voltar</a>
                 </div>
             </form>
         </main> 
