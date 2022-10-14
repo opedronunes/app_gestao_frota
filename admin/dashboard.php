@@ -84,11 +84,53 @@ $row_colaborador = $tcolaborador->fetch(PDO::FETCH_ASSOC);
                     <i class="ph-clock-clockwise"></i>Últimos lançamentos
                 </div>
                 <div class="my-4">
-                    <h4>Essa página esta construção!</h4>
+                    <h4>Essa página esta em construção!</h4>
                     <small>Para visualizar o CRUD acesse a página Colaboradores.</small>
                 </div>
             </div>
         </section>
+        <section>
+            <div class="container">
+                <div id="itens">
+                    <small>Nesta entrega, é uma pequena parte de um projeto maior, em que será criado um sistema completo de gestão de frotas e seu faturamento.</small>
+                    <div class="item">
+                        <h5>O que foi feito no projeto:</h5>
+                        <ol>
+                            <li><strong>Tela de login</strong> com autenticação de usuário, validação e niveis de acesso.</li>
+                            <li><strong>Telas de cadastro</strong> de usuários e colaboradores.</li>
+                            <li><strong>Função de edição</strong> dos dados dos colaboradores.</li>
+                            <li><strong>Função de exclusão</strong> de dados do banco de dados.</li>
+                            <li><strong>Segurança de dados</strong> com PDO.</li>
+                            <li><strong>Paradigma de orientação a objetos.</strong></li>
+                            <li><strong>Hospedagem</strong> feita na Infinity Free.</li>
+                        </ol>
+                    </div>
+                    <div class="item">
+                        <h5>Próximos passos:</h5>
+                        <ol>
+                            <li>Inclusão das entidades restantes: Frotas, faturamento e Despesas.</li>
+                            <li>Composer: utilização de namespaces, pacotes que auxiliarão no desenvolvimento.</li>
+                            <li>Adaptação para ser utilizado em vários dispositivos.</li>
+                            <li>Buscando novas feautures...</li>
+                        </ol>
+                    </div>
+                    <small>OBS.: Provável que o projeto completo será integrado a um site, ou entregue em sua forma principal para solucionar problemas reais.</small>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="container">
+                <div id="social">
+                    <ul>
+                        <li><a href="https://www.opedronunes.com.br/" target="_blank" title="Portfólio"><i class="ph-rocket-launch"></i></a></li>
+                        <li><a href="https://github.com/opedronunes" target="_blank" title="GitHub"><i class="ph-github-logo"></i></a></li>
+                        <li><a href="https://www.instagram.com/opedronunes.dev/" target="_blank" title="Instagram"><i class="ph-instagram-logo"></i></a></li>
+                        <li><a href="https://api.whatsapp.com/qr/OZWPJVZZLJ2WG1" target="_blank" title="Whatsapp"><i class="ph-whatsapp-logo"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </footer>
         <script src="../assets/js/bootstrapv5.2.min.js"></script> 
     </body>
 </html>
