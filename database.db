@@ -26,3 +26,19 @@ id_status INT NOT NULL AUTO_INCREMENT,
 no_status VARCHAR(50),
 PRIMARY KEY(id_status)
 );
+
+CREATE TABLE `tb_colaborador` (
+  `id_colaborador` int NOT NULL AUTO_INCREMENT,
+  `nu_cpf_colaborador` varchar(11) NOT NULL,
+  `no_colaborador` varchar(150) NOT NULL,
+  `dt_nascimento` date NOT NULL,
+  `dt_admissao` date NOT NULL,
+  `no_funcao` varchar(100) DEFAULT NULL,
+  `vl_salario` decimal(6,2) DEFAULT NULL,
+  `dt_cadastro` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_status` INT,
+  CONSTRAINT fk_status_colaborador FOREIGN KEY(id_status)
+	REFERENCES tb_status(id_status),
+  PRIMARY KEY (`id_colaborador`),
+  UNIQUE KEY `nu_cpf` (`nu_cpf_colaborador`)
+);
